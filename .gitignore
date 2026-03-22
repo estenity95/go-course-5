@@ -1,0 +1,20 @@
+.idea/
+.vscode/
+
+# Go binaries
+/bin/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test / coverage
+*.test
+*.out
+coverage.out
+
+# OS files
+.DS_Store
+Thumbs.db
