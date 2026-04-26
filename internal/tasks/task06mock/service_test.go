@@ -38,7 +38,7 @@ func TestSendEmail(t *testing.T) {
 	}
 
 	if mock.subject != "Welcome, Sasha!" {
-		t.Fatalf("email sender received subject = %q, want %q", mock.subject, "Welcome, Alice!")
+		t.Fatalf("email sender received subject = %q, want %q", mock.subject, "Welcome, Sasha!")
 	}
 }
 

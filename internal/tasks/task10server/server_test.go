@@ -15,7 +15,11 @@ func TestServerSumEndpoint(t *testing.T) {
 	if err != nil {
 		t.Fatalf("GET /sum failed: %v", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			t.Errorf("failed to close response body: %v", err)
+		}
+	}()
 
 	if got, want := resp.StatusCode, http.StatusOK; got != want {
 		t.Fatalf("status code = %d, want %d", got, want)
@@ -40,7 +44,11 @@ func TestServerSumEndpointBadRequest(t *testing.T) {
 		t.Fatalf("GET /sum failed: %v", err)
 	}
 
-	defer resp.Body.Close()
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			t.Errorf("failed to close response body: %v", err)
+		}
+	}()
 
 	if got, want := resp.StatusCode, http.StatusBadRequest; got != want {
 		t.Fatalf("status code = %d, want %d", got, want)
