@@ -18,3 +18,15 @@ func TestReverseCopyProperties(t *testing.T) {
 		t.Fatalf("quick.Check failed: %v", err)
 	}
 }
+
+func BenchmarkReverseCopy(b *testing.B) {
+	values := make([]int, 1000)
+	for i := range values {
+		values[i] = i
+	}
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = ReverseCopy(values)
+	}
+}
